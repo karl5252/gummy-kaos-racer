@@ -1,19 +1,30 @@
 import Phaser from 'phaser'
 
-import HelloWorldScene from './HelloWorldScene'
+import {Boot} from "./scenes/Boot.js";
+import {GameScene} from "./scenes/GameScene.js";
 
 const config = {
 	type: Phaser.AUTO,
 	parent: 'app',
-	width: 800,
-	height: 600,
-	physics: {
-		default: 'arcade',
-		arcade: {
-			gravity: { y: 200 },
-		},
-	},
-	scene: [HelloWorldScene],
+	width: 1200,
+	height: 840,
+    backgroundColor: '#028af8',
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 0 }, // No gravity for top-down
+            fps: 120,
+            debug: false,
+            debugShowBody: true,
+            debugShowStaticBody: true
+        }
+    },
+	scene: [
+        Boot,
+        //Preloader,
+        //MainMenu,
+        GameScene
+    ],
 }
 
 export default new Phaser.Game(config)

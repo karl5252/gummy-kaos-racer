@@ -64,7 +64,7 @@ npm install
 ```
 Run development server:
 ```bash
-npm run dev
+npm run start
 ```
 Build for production:
 ```bash
