@@ -1,30 +1,24 @@
 import Phaser from 'phaser';
 import {logger} from '../utils/Logger.js';
+import {Player} from "../Player.js";
 
 export class GameScene extends Phaser.Scene {
     constructor() {
         super('GameScene');
     }
 
-    preload() {
-        this.load.image("bear-o", "assets/bears/bear_orange.png");
-        this.load.image("bear-y", "assets/bears/bear_yellow.png");
-        this.load.image("bear-r", "assets/bears/bear_red.png");
-    }
-
     create() {
         const {width, height} = this.scale;
 
-        this.player = this.add.rectangle(
-            width / 2,
-            height / 2,
-            50,
-            50,
-            0x00ff00
-        );
+        this.player = new Player(this, width / 2, height / 2);
+        // Ensure player starts within bounds
+        this.player.x = Phaser.Math.Clamp(this.player.x, 0, this.scale.width);
+        this.player.y = Phaser.Math.Clamp(this.player.y, 0, this.scale.height);
+        // after sprite replace with rectangle, we need to set the physics body manually
+        //this.player = this.scene.physics.add.image(width / 2, height / 2, 'car');
+        //this.player.setCollideWorldBounds(true);
 
-        this.cursors = this.input.keyboard.createCursorKeys();
-
+        // bears
         this.initBear("bear-o");
         this.initBear("bear-y");
         this.initBear("bear-r");
@@ -33,12 +27,10 @@ export class GameScene extends Phaser.Scene {
     }
 
     update() {
-        const speed = 3;
+        // Game logic and updates go here
+        this.player.update();
 
-        if (this.cursors.left.isDown) this.player.x -= speed;
-        if (this.cursors.right.isDown) this.player.x += speed;
-        if (this.cursors.up.isDown) this.player.y -= speed;
-        if (this.cursors.down.isDown) this.player.y += speed;
+
     }
 
     initBear(b) {
