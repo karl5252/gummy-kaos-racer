@@ -1,5 +1,4 @@
 import Phaser from 'phaser'
-
 import {Boot} from "./scenes/Boot.js";
 import {GameScene} from "./scenes/GameScene.js";
 
@@ -18,6 +17,12 @@ const config = {
             debugShowBody: true,
             debugShowStaticBody: true
         }
+    },
+    scale: {
+        width: window.innerWidth,
+        height: window.innerHeight,
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH
     },
 	scene: [
         Boot,
