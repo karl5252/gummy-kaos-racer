@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import {DEPTH} from "./constants/Depth.js";
 
 export class Player {
     constructor(scene, x, y) {
@@ -10,7 +11,7 @@ export class Player {
         this.friction = 0.98;
         this.rotationSpeed = 0.04;
 
-        this.player = this.scene.add.rectangle(x, y, 60, 30, 0x00ff00);
+        this.player = this.scene.add.rectangle(x, y, 60, 30, 0x00ff00).setDepth(DEPTH.CARS);
         this.cursors = this.scene.input.keyboard.createCursorKeys();
     }
 
