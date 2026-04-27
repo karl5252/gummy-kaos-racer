@@ -11,3 +11,12 @@
 - [x] Add bears (Mark)
 - [x] Bears move randomly (Mark)
 - [x] Refactor Player class (Karl)
+
+## MVP Goal
+
+Score Attack:
+
+- game lasts 60 seconds
+- each smashed bear gives +1 point
+- final score shown when time ends
+- player can restart and try to beat score
