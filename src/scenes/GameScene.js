@@ -7,9 +7,9 @@ export class GameScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image("bear-o", "public/assets/bears/bear_orange.png");
-        this.load.image("bear-y", "public/assets/bears/bear_yellow.png");
-        this.load.image("bear-r", "public/assets/bears/bear_red.png");
+        this.load.image("bear-o", "assets/bears/bear_orange.png");
+        this.load.image("bear-y", "assets/bears/bear_yellow.png");
+        this.load.image("bear-r", "assets/bears/bear_red.png");
     }
 
     create() {
