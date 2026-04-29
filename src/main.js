@@ -1,6 +1,7 @@
 import Phaser from 'phaser'
 import {Boot} from "./scenes/Boot.js";
 import {GameScene} from "./scenes/GameScene.js";
+import {Preloader} from "./scenes/Preloader.js";
 
 const config = {
 	type: Phaser.AUTO,
@@ -26,7 +27,7 @@ const config = {
     },
 	scene: [
         Boot,
-        //Preloader,
+        Preloader,
         //MainMenu,
         GameScene
     ],
