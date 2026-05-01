@@ -30,6 +30,8 @@ export class Preloader extends Scene {
         this.load.image("bear-y", "bears/bear_yellow.png");
         this.load.image("bear-r", "bears/bear_red.png");
 
+        this.load.image("player", "car.png");
+
 
         // sounds
 

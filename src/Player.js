@@ -11,8 +11,24 @@ export class Player {
         this.friction = 0.98;
         this.rotationSpeed = 0.04;
 
-        this.player = this.scene.add.rectangle(x, y, 60, 30, 0x00ff00).setDepth(DEPTH.CARS);
+        this.sprite = scene.physics.add.sprite(x, y, `player`).setDepth(DEPTH.CARS);
+
+        // Physics setup
+        this.sprite.body.setGravity(0, 0);
+        this.sprite.setCollideWorldBounds(true);
         this.cursors = this.scene.input.keyboard.createCursorKeys();
+    }
+
+    get x() {
+        return this.sprite.x;
+    }
+
+    get y() {
+        return this.sprite.y;
+    }
+
+    get rotation() {
+        return this.sprite.rotation;
     }
 
     update() {
@@ -25,15 +41,19 @@ export class Player {
         this.speed = Phaser.Math.Clamp(this.speed, -this.maxSpeed, this.maxSpeed);
 
         if (this.cursors.left.isDown) {
-            this.player.rotation -= this.rotationSpeed;
+            this.sprite.rotation -= this.rotationSpeed;
         }
         if (this.cursors.right.isDown) {
-            this.player.rotation += this.rotationSpeed;
+            this.sprite.rotation += this.rotationSpeed;
         }
 
-        this.player.x += Math.cos(this.player.rotation) * this.speed;
-        this.player.y += Math.sin(this.player.rotation) * this.speed;
+        this.sprite.x += Math.cos(this.sprite.rotation) * this.speed;
+        this.sprite.y += Math.sin(this.sprite.rotation) * this.speed;
 
         this.speed *= this.friction;
+    }
+
+    destroy() {
+        this.sprite.destroy();
     }
 }
